@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
+export const Button = styled.div`
     ${({ theme }) => css`
         
         cursor: pointer;
@@ -25,7 +25,6 @@ export const Wrapper = styled.div`
             width: 1.35rem;
             height: 1.35rem;
             margin-right: 0.5rem;
-            
         }
 
         p {
