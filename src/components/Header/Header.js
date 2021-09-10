@@ -1,7 +1,7 @@
 import { Wrapper } from "./Header.styles"
-import HeaderCartButton from "../Cart/HeaderCartButton/HeaderCartButton"
+import HeaderCartButton from "./HeaderCartButton/HeaderCartButton"
 import HeaderImage from "./HeaderImage/HeaderImage"
-import { HeaderWrapper } from "../../App.styles"
+import { HeaderWrapper } from "./Header.styles"
 
 const Header = () => {
     return (
