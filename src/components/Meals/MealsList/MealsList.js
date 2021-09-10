@@ -5,6 +5,7 @@ const MealsList = items => {
         <ul>
             {items.items.map((item) => (
                 <MealItem 
+                    id={item.id}
                     key={item.id}
                     name={item.name}
                     description={item.description}

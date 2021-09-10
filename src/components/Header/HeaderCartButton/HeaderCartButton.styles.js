@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.div`
+export const HeaderButtonWrapper = styled.div`
     ${({ theme }) => css`
         
         cursor: pointer;

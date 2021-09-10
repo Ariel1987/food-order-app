@@ -2,8 +2,9 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.section`
     ${({ theme }) => css`
-        height: 100vh;
         background-color: ${theme.colors.background};
+        height: 100%;
+        overflow: hidden;
     `}
 `
 
@@ -49,18 +50,15 @@ export const MealsListWrapper = styled.section`
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         border-radius: 14px;
         background-color: white;
-
-        
         max-width: 60rem;
         width: 90%;
         margin: 2rem auto;
         animation: meals-appear 1s ease-out forwards;
-            
-
+ 
         ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         @keyframes meals-appear {
@@ -72,7 +70,7 @@ export const MealsListWrapper = styled.section`
             to {
                 opacity: 1;
                 transform: translateY(0);
-        }
+            }
         }
     `}
 `

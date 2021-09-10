@@ -1,13 +1,13 @@
-import { Button } from "./HeaderCartButton.styles"
+import { HeaderButtonWrapper } from "./HeaderCartButton.styles"
 import CartIcon from "./HeaderCartIcon"
 
 const HeaderCartButton = () => {
     return (
-        <Button>
+        <HeaderButtonWrapper>
             <CartIcon />
             <h5>Your Cart</h5>
             <p>0</p>
-        </Button>
+        </HeaderButtonWrapper>
 
     )
 }

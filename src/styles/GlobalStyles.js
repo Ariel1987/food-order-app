@@ -6,6 +6,7 @@ export default createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family: sans-serif;
+
     }
 
     html {
@@ -15,6 +16,7 @@ export default createGlobalStyle`
     body {
         height: 100vh;
         width: 100vw;
+        overflow-x: hidden;
     }
 
 `
