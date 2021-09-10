@@ -1,4 +1,4 @@
-import Input from "./Input/Input"
+import Input from "../../../UI/Input/Input"
 
 const MealItemForm = props => {
     return (

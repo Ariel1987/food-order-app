@@ -1,5 +1,5 @@
 import { Wrapper } from "./Header.styles"
-import HeaderCartButton from "./HeaderCartButton/HeaderCartButton"
+import HeaderCartButton from "../Cart/HeaderCartButton/HeaderCartButton"
 import HeaderImage from "./HeaderImage/HeaderImage"
 import { HeaderWrapper } from "../../App.styles"
 
