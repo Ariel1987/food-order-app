@@ -3,12 +3,12 @@ import HeaderCartButton from "./HeaderCartButton/HeaderCartButton"
 import HeaderImage from "./HeaderImage/HeaderImage"
 import { HeaderWrapper } from "./Header.styles"
 
-const Header = () => {
+const Header = props => {
     return (
         <Wrapper>
             <HeaderWrapper>
                 <h1>ReactMeals</h1>
-                <HeaderCartButton />
+                <HeaderCartButton onClick={props.onShowCart} />
             </HeaderWrapper>
             <HeaderImage />
         </Wrapper>

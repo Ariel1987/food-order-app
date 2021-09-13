@@ -1,13 +1,14 @@
 import { ModalWrapper, Wrapper } from "./Modal.styles"
-import Cart from "../../Cart/Cart"
+import ReactDom from "react-dom"
 
-const Modal = () => {
+const portalElement = document.getElementById('overlays')
+
+const Modal = props => {
     return (
-        <Wrapper>
-            <ModalWrapper>
-                <Cart />
-            </ModalWrapper>
-        </Wrapper>
+        <ModalWrapper>
+            {ReactDom.createPortal(<Wrapper  onClick={props.onHideCart}/>, portalElement)}
+            {props.children}
+        </ModalWrapper>
     )
 }
 

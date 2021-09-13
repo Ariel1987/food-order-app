@@ -1,12 +1,13 @@
 import { Wrapper } from "./Input.styles"
+import React from "react"
 
-const Input = props => {
+const Input = React.forwardRef((props, ref) => {
     return (
         <Wrapper>
             <label htmlFor={props.input.id}>{props.label}</label>
-            <input {...props.input}></input>
+            <input ref={ref} {...props.input}></input>
         </Wrapper>
     )
-}
+})
 
 export default Input

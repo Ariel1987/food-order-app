@@ -2,23 +2,25 @@ import styled, { css } from "styled-components";
 
 export const HeaderButtonWrapper = styled.div`
     ${({ theme }) => css`
-        
-        cursor: pointer;
-        font: inherit;
-        border: none;
-        background-color: #4d1601;
-        padding: 0.75rem 3rem;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 25px;
-        font-weight: bold;
-        font-size: ${theme.font.size.xsmall};
-        color: white;
+        button {
+            cursor: pointer;
+            font: inherit;
+            border: none;
+            background-color: #4d1601;
+            padding: 0.75rem 3rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: ${theme.font.size.xsmall};
+            color: white;
 
-        :hover,
-        :active {
-            background-color: #2c0d00;
+            :hover,
+            :active {
+                background-color: #2c0d00;
+            }
+
         }
 
         svg {

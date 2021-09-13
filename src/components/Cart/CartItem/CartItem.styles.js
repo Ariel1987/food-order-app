@@ -41,7 +41,6 @@ export const Wrapper = styled.li`
 export const CartItemButtonsWrapper = styled.div`
     ${({ theme }) => css`
         display: flex;
-        flex-direction: column;
 
         @media (min-width: 768px) {
             .actions {
