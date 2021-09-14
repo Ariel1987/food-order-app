@@ -16,11 +16,11 @@ export const MealsSummaryWrapper = styled.section`
         margin: auto;
         margin-top: -10rem;
         position: relative;
-        background-color: #383838;
-        color: white;
+        background-color: ${theme.colors.octonary};
+        color: ${theme.colors.primary};
         border-radius: 14px;
         padding: 1rem;
-        box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 1px 18px 10px ${theme.colors.tertiary};
         z-index: 10;
 
     `}
@@ -29,9 +29,9 @@ export const MealsSummaryWrapper = styled.section`
 export const MealsListWrapper = styled.section`
     ${({ theme }) => css`
         padding: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 2px 8px ${theme.colors.tertiary};
         border-radius: 14px;
-        background-color: white;
+        background-color: ${theme.colors.primary};
         max-width: 60rem;
         width: 90%;
         margin: 2rem auto;

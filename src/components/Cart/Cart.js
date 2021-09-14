@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import CartContext from "../../store/cart-context"
 import Modal from "../UI/Modal/Modal"
-import { Wrapper, TotalAmountWrapper, ButtonWrapper, CloseButtonWrapper } from "./Cart.styles"
+import { Wrapper, TotalAmountWrapper, ButtonWrapper, CloseButton, OrderButton } from "./Cart.styles"
 import CartItem from "./CartItem/CartItem"
 
 const Cart = props => {
@@ -11,23 +11,23 @@ const Cart = props => {
     const hasItems = cartCtx.items.length > 0
 
     const cartItemRemoveHandler = id => {
-
+        cartCtx.removeItem(id)
     }
 
     const cartItemAddHandler = item => {
-
+        cartCtx.addItem({ ...item, amount: 1 })
     }
 
     const cartItems = (
         <Wrapper>
             {cartCtx.items.map(item =>
-                <CartItem 
-                    key={item.id} 
-                    name={item.name} 
-                    amount={item.amount} 
-                    price={item.price} 
-                    onRemove={cartItemRemoveHandler.bind(null, item.id)} 
-                    onAdd={cartItemAddHandler.bind(null, item)} 
+                <CartItem
+                    key={item.id}
+                    name={item.name}
+                    amount={item.amount}
+                    price={item.price}
+                    onRemove={cartItemRemoveHandler.bind(null, item.id)}
+                    onAdd={cartItemAddHandler.bind(null, item)}
                 />
             )}
         </Wrapper>
@@ -41,10 +41,8 @@ const Cart = props => {
                 <span>{totalAmount}</span>
             </TotalAmountWrapper>
             <ButtonWrapper>
-                <CloseButtonWrapper>
-                    <button onClick={props.onHideCart}>Close</button>
-                </CloseButtonWrapper>
-                {hasItems && <button>Order</button>}
+                <CloseButton onClick={props.onHideCart}>Close</CloseButton>
+                {hasItems && <OrderButton>Order</OrderButton>}
             </ButtonWrapper>
         </Modal>
     )

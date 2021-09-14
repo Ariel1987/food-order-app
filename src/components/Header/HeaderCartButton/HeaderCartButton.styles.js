@@ -1,24 +1,24 @@
 import styled, { css } from "styled-components";
 
 export const HeaderButtonWrapper = styled.div`
-    ${({ theme }) => css`
+        ${({ theme }) => css`
         button {
             cursor: pointer;
             font: inherit;
             border: none;
-            background-color: #4d1601;
+            background-color: ${theme.colors.button};
             padding: 0.75rem 3rem;
             display: flex;
             justify-content: space-around;
             align-items: center;
             border-radius: 25px;
-            font-weight: bold;
+            font-weight: ${theme.font.weight.bold};
             font-size: ${theme.font.size.xsmall};
-            color: white;
+            color: ${theme.colors.primary};
 
             :hover,
             :active {
-                background-color: #2c0d00;
+                background-color: ${theme.colors.quinary};
             }
 
         }
@@ -30,7 +30,7 @@ export const HeaderButtonWrapper = styled.div`
         }
 
         p {
-            background-color: #b94517;
+            background-color: ${theme.colors.senary};
             padding: 0.25rem 1rem;
             border-radius: 25px;
             margin-left: 1rem;
@@ -38,10 +38,8 @@ export const HeaderButtonWrapper = styled.div`
 
         :hover p,
         :active p {
-            background-color: #92320c;
+            background-color: ${theme.colors.septenary};
         }
-
-        animation: bump 300ms ease-out;
 
         @keyframes bump {
             0% {

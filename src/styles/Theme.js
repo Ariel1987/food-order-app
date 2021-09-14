@@ -4,9 +4,13 @@ export const theme = {
         secundary: '#dfdddf', 
         tertiary: 'rgba(0, 0, 0, 0.25)',
         quarternary: '#8a2b06',
+        quinary: '#2c0d00',
+        senary: '#b94517',
+        septenary: '#92320c',
+        octonary: '#363636',
         font: '#ad5502',
         background: '#1e1c1e',
-        button: '#4d1601',
+        button: '#4d1601'
     },
     font: {
         family: 'Roboto san-serif',

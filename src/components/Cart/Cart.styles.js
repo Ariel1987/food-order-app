@@ -9,7 +9,7 @@ export const Wrapper = styled.ul`
         overflow-y: scroll;
     
     `}
-` 
+`
 
 export const TotalAmountWrapper = styled.div`
     ${({ theme }) => css`
@@ -24,50 +24,50 @@ export const TotalAmountWrapper = styled.div`
         }
         
     `}
-` 
+`
 
 export const ButtonWrapper = styled.div`
     ${({ theme }) => css`
         display:flex;
         justify-content: flex-end;
-                    
-        button {
-            font: inherit;
-            cursor: pointer;
-            border: 1px solid #8a2b06;
-            padding: 0.5rem 2rem;
-            border-radius: 25px;
-            margin-left: 1rem;
-            background-color: #8a2b06;
-            color: white;
-            
-            :hover,
-            :active {
-            background-color: #5a1a01;
-            border-color: #5a1a01;
-            color: white;
-            }
-        
-        }
-    
     `}
-` 
+`
 
-export const CloseButtonWrapper = styled.div`
+export const CloseButton = styled.div`
     ${({ theme }) => css`
-        button {
-            background-color: transparent;
-            border: 1px solid #8a2b06;
-            color: #8a2b06;
-            
-            :hover,
-            :active {
-            background-color: #5a1a01;
-            border-color: #5a1a01;
-            color: white;
-            }
+        background-color: transparent;
+        border: 1px solid #8a2b06;
+        color: #8a2b06;
+        font: inherit;
+        cursor: pointer;
+        padding: 0.5rem 2rem;
+        border-radius: 25px;
+        margin-left: 1rem;
         
+        :hover,
+        :active {
+        background-color: #5a1a01;
+        border-color: #5a1a01;
+        color: white;
         }
-    
     `}
-` 
+`
+export const OrderButton = styled.div`
+    ${({ theme }) => css`
+        background-color: #8a2b06;
+        color: white;
+        border: 1px solid #8a2b06;
+        font: inherit;
+        cursor: pointer;
+        padding: 0.5rem 2rem;
+        border-radius: 25px;
+        margin-left: 1rem;
+        
+        :hover,
+        :active {
+        background-color: #5a1a01;
+        border-color: #5a1a01;
+        color: white;
+    `}
+`
+

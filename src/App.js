@@ -11,11 +11,11 @@ import CartProvider from "./store/CartProvider";
 function App() {
   const [cartIsShown, setCartIsShonw] = useState(false)
 
-  const showCartHandler = event => {
+  const showCartHandler = () => {
     setCartIsShonw(true)
   }
 
-  const hideCartHandler = event => {
+  const hideCartHandler = () => {
     setCartIsShonw(false)
   }
 

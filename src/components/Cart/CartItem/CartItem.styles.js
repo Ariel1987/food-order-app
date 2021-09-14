@@ -5,13 +5,13 @@ export const Wrapper = styled.li`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid #8a2b06;
+        border-bottom: 2px solid ${theme.colors.quarternary};
         padding: 1rem 0;
         margin: 1rem 0;
 
         h2 {
             margin: 0 0 0.5rem 0;
-            color: #363636; 
+            color: ${theme.colors.octonary}; 
         }
 
         section {
@@ -23,18 +23,16 @@ export const Wrapper = styled.li`
 
         p {
             font-weight: bold;
-            color: #8a2b06;
+            color: ${theme.colors.quarternary};
         }
 
         span {
             font-weight: bold;
-            border: 1px solid #ccc;
+            border: 1px solid ${theme.colors.secundary};
             padding: 0.25rem 0.75rem;
             border-radius: 6px;
-            color: #363636;
+            color: ${theme.colors.octonary};
         }
-
-
     `}
 `
 
@@ -50,10 +48,10 @@ export const CartItemButtonsWrapper = styled.div`
   
         button {
             font: inherit;
-            font-weight: bold;
-            font-size: 1.25rem;
-            color: #8a2b06;
-            border: 1px solid #8a2b06;
+            font-weight: ${theme.font.weight.bold};
+            font-size: ${theme.font.size.xsmall};
+            color: ${theme.colors.quarternary};
+            border: 1px solid ${theme.colors.quarternary};
             width: 3rem;
             text-align: center;
             border-radius: 6px;
@@ -64,7 +62,7 @@ export const CartItemButtonsWrapper = styled.div`
 
             :hover,
             :active {
-                background-color: #8a2b06;
+                background-color: ${theme.colors.quarternary};
                 color: white;
             }
         }
