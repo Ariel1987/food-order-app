@@ -1,10 +1,13 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import CartContext from "../../store/cart-context"
+import CheckOutForm from "../CheckOutForm/CheckOutForm"
 import Modal from "../UI/Modal/Modal"
 import { Wrapper, TotalAmountWrapper, ButtonWrapper, CloseButton, OrderButton } from "./Cart.styles"
 import CartItem from "./CartItem/CartItem"
 
 const Cart = props => {
+    const [checkOutFormIsShown, setCheckOutFormIsShown] = useState(false)
+
     const cartCtx = useContext(CartContext)
 
     const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`
@@ -16,6 +19,10 @@ const Cart = props => {
 
     const cartItemAddHandler = item => {
         cartCtx.addItem({ ...item, amount: 1 })
+    }
+
+    const showCheckOutFormHandler = () => {
+        setCheckOutFormIsShown(true)
     }
 
     const cartItems = (
@@ -34,17 +41,22 @@ const Cart = props => {
     )
 
     return (
-        <Modal onHideCart={props.onHideCart}>
-            {cartItems}
-            <TotalAmountWrapper>
-                <span>Total Amount</span>
-                <span>{totalAmount}</span>
-            </TotalAmountWrapper>
-            <ButtonWrapper>
-                <CloseButton onClick={props.onHideCart}>Close</CloseButton>
-                {hasItems && <OrderButton>Order</OrderButton>}
-            </ButtonWrapper>
+        <Modal onHideCart={checkOutFormIsShown ? null : props.onHideCart}>
+            {checkOutFormIsShown ? <CheckOutForm /> :
+                <div>
+                    {cartItems}
+                    <TotalAmountWrapper>
+                        <span>Total Amount</span>
+                        <span>{totalAmount}</span>
+                    </TotalAmountWrapper>
+                    <ButtonWrapper>
+                        <CloseButton onClick={props.onHideCart}>Close</CloseButton>
+                        {hasItems && <OrderButton onClick={showCheckOutFormHandler}>Order</OrderButton>}
+                    </ButtonWrapper>
+                </div>
+            }
         </Modal>
+
     )
 }
 
