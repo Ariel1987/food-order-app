@@ -2,47 +2,76 @@ import styled, { css } from "styled-components";
 
 export const InputWrapper = styled.div`
     ${({ theme }) => css`
+    margin: 1rem 0;
+    height: 19rem;
+    overflow: auto;
+
+    input {
         margin-bottom: 0.5rem;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+
+    input {
+        font: inherit;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 20rem;
+        max-width: 100%;
+    }
+
+    section {
         display: flex;
-        flex-direction: column;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
 
-        label {
-            font-weight: bold;
-            margin-right: 1rem;
+
+    .invalid label {
+    color: #ca3e51;
+    }
+
+    .invalid input {
+    border-color: #aa0b20;
+    background-color: #ffeff1;
+    }
+
+
+    `}
+`
+
+export const SubmitButton = styled.div`
+    ${({ theme }) => css`{
+        font: inherit;
+        cursor: pointer;
+        border-radius: 25px;
+        padding: 0.5rem 2rem; 
+        border: 1px solid #5a1a01;
+        background-color: #5a1a01;
+        color: white;
+        :hover,
+        :active {
+            background-color: #7a2706;        
         }
+    `}
+`
 
-        input {
-            margin: 10px 0;
-            width: 100%;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font: inherit;
-            padding: 0.5rem;
-        }
-
-        button {
-            margin-top: 20px;
-            width: 25%;
-            align-self: flex-end;
-            font: inherit;
-            cursor: pointer;
-            background-color: #8a2b06;
-            border: 1px solid #8a2b06;
-            color: white;
-            padding: 0.25rem 2rem;
-            border-radius: 20px;
-            font-weight: bold;
-
-            :hover,
-            :active {
-                background-color: #641e03;
-                border-color: #641e03;
-            }
-        }
-
-        p {
-            color: red;
-            padding-bottom: 10px;
+export const CancelButton = styled.div`
+    ${({ theme }) => css`{
+        font: inherit;
+        color: #5a1a01;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        border-radius: 25px;
+        padding: 0.5rem 2rem; 
+        ::hover,
+        :active {
+            background-color: #ffe6dc;    
         }
     `}
 `

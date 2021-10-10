@@ -1,5 +1,5 @@
 import useInput from "../../hooks/use-input"
-import { InputWrapper } from "./CheckOutForm.styles"
+import { CancelButton, InputWrapper, SubmitButton } from "./CheckOutForm.styles"
 import Input from "../UI/Input/Input"
 import { useContext, useState } from "react"
 import CartContext from "../../store/cart-context"
@@ -40,7 +40,7 @@ const CheckOutForm = (props) => {
     }
 
     const createOrder = (clientName, clientAddress, orderText, orderData) => {
-        const generatedId = orderData.name; 
+        const generatedId = orderData.name;
         const createdTask = {
             id: generatedId,
             name: clientName,
@@ -101,9 +101,9 @@ const CheckOutForm = (props) => {
                     />
                     {nameHasError && <p>Name must not be empty</p>}
                     <Input
-                        label='Address'
+                        label='Street'
                         input={{
-                            id: 'address',
+                            id: 'street',
                             type: 'text',
                             onChange: addressChangeHandler,
                             onBlur: addressBlurHandler,
@@ -111,7 +111,32 @@ const CheckOutForm = (props) => {
                         }}
                     />
                     {addressHasError && <p>Address must not be empty</p>}
-                    <button disabled={!formIsValid}>{isLoading ? 'Submitting order...' : 'Submit'}</button>
+                    <Input
+                        label='Post Code'
+                        input={{
+                            id: 'postal',
+                            type: 'text',
+                            onChange: addressChangeHandler,
+                            onBlur: addressBlurHandler,
+                            value: addressValue
+                        }}
+                    />
+                    {addressHasError && <p>Address must not be empty</p>}
+                    <Input
+                        label='City'
+                        input={{
+                            id: 'city',
+                            type: 'text',
+                            onChange: addressChangeHandler,
+                            onBlur: addressBlurHandler,
+                            value: addressValue
+                        }}
+                    />
+                    {addressHasError && <p>Address must not be empty</p>}
+                    <section>
+                        <CancelButton type='button' onClick={props.onCancel}>Cancel</CancelButton>
+                        <SubmitButton disabled={!formIsValid}>{isLoading ? 'Submitting order...' : 'Submit'}</SubmitButton>
+                    </section>
                     {error && <p>{error}</p>}
                 </InputWrapper>
             }

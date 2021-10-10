@@ -48,12 +48,13 @@ const Cart = props => {
                     <span>Total Amount</span>
                     <span>{totalAmount}</span>
                 </TotalAmountWrapper>
-                <ButtonWrapper>
-                    <CloseButton onClick={props.onHideCart}>Close</CloseButton>
-                    {hasItems && <OrderButton onClick={showCheckOutFormHandler}>Order</OrderButton>}
-                </ButtonWrapper>
+                {checkOutFormIsShown ? <CheckOutForm onCancel={props.onHideCart} /> :
+                    <ButtonWrapper>
+                        <CloseButton onClick={props.onHideCart}>Close</CloseButton>
+                        {hasItems && <OrderButton onClick={showCheckOutFormHandler}>Order</OrderButton>}
+                    </ButtonWrapper>
+                }
             </div>
-            {checkOutFormIsShown && <CheckOutForm />}
         </Modal>
 
     )
