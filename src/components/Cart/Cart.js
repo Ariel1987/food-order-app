@@ -42,19 +42,18 @@ const Cart = props => {
 
     return (
         <Modal onHideCart={checkOutFormIsShown ? null : props.onHideCart}>
-            {checkOutFormIsShown ? <CheckOutForm /> :
-                <div>
-                    {cartItems}
-                    <TotalAmountWrapper>
-                        <span>Total Amount</span>
-                        <span>{totalAmount}</span>
-                    </TotalAmountWrapper>
-                    <ButtonWrapper>
-                        <CloseButton onClick={props.onHideCart}>Close</CloseButton>
-                        {hasItems && <OrderButton onClick={showCheckOutFormHandler}>Order</OrderButton>}
-                    </ButtonWrapper>
-                </div>
-            }
+            <div>
+                {cartItems}
+                <TotalAmountWrapper>
+                    <span>Total Amount</span>
+                    <span>{totalAmount}</span>
+                </TotalAmountWrapper>
+                <ButtonWrapper>
+                    <CloseButton onClick={props.onHideCart}>Close</CloseButton>
+                    {hasItems && <OrderButton onClick={showCheckOutFormHandler}>Order</OrderButton>}
+                </ButtonWrapper>
+            </div>
+            {checkOutFormIsShown && <CheckOutForm />}
         </Modal>
 
     )
