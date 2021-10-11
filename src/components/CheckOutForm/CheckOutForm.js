@@ -3,7 +3,6 @@ import { CancelButton, InputWrapper, SubmitButton } from "./CheckOutForm.styles"
 import Input from "../UI/Input/Input"
 import { useContext, useState } from "react"
 import CartContext from "../../store/cart-context"
-import Submission from "../Submission/Submission"
 import useHttp from '../../hooks/use-http'
 
 const isNotEmpty = value => value.trim() !== ''
@@ -25,26 +24,48 @@ const CheckOutForm = (props) => {
     } = useInput(isNotEmpty)
 
     const {
-        value: addressValue,
-        isValid: addressIsValid,
-        hasError: addressHasError,
-        valueChangeHandler: addressChangeHandler,
-        inputBlurHandler: addressBlurHandler,
-        reset: resetAddress
+        value: streetValue,
+        isValid: streetIsValid,
+        hasError: streetHasError,
+        valueChangeHandler: streetChangeHandler,
+        inputBlurHandler: streetBlurHandler,
+        reset: resetStreet
+    } = useInput(isNotEmpty)
+
+    const {
+        value: postalValue,
+        isValid: postalIsValid,
+        hasError: postalHasError,
+        valueChangeHandler: postalChangeHandler,
+        inputBlurHandler: postalBlurHandler,
+        reset: resetPostal
+    } = useInput(isNotEmpty)
+
+    const {
+        value: cityValue,
+        isValid: cityIsValid,
+        hasError: cityHasError,
+        valueChangeHandler: cityChangeHandler,
+        inputBlurHandler: cityBlurHandler,
+        reset: resetCity
     } = useInput(isNotEmpty)
 
     let formIsValid = false
 
-    if (nameIsValid && addressIsValid) {
+    if (nameIsValid && streetIsValid && postalIsValid && cityIsValid) {
         formIsValid = true
     }
 
-    const createOrder = (clientName, clientAddress, orderText, orderData) => {
+    const createOrder = (clientName, clientStreet, clientPostal, clientCity, orderText, orderData) => {
         const generatedId = orderData.name;
         const createdTask = {
             id: generatedId,
-            name: clientName,
-            address: clientAddress,
+            user: {
+                name: clientName,
+                street: clientStreet,
+                postal: clientPostal,
+                city: clientCity,
+            },
             order: orderText
         };
 
@@ -52,7 +73,7 @@ const CheckOutForm = (props) => {
     };
 
 
-    const enterOrderHandler = async (clientName, clientAddress, orderText) => {
+    const enterOrderHandler = async (clientName, clientStreet, clientPostal, clientCity, orderText) => {
         sendOrderRequest(
             {
                 url: 'https://food-order-app-db98e-default-rtdb.firebaseio.com/orders.json',
@@ -61,12 +82,16 @@ const CheckOutForm = (props) => {
                     'Content-Type': 'application/json'
                 },
                 body: {
-                    name: clientName,
-                    address: clientAddress,
+                    user: {
+                        name: clientName,
+                        street: clientStreet,
+                        postal: clientPostal,
+                        city: clientCity,
+                    },
                     order: orderText
                 }
             },
-            createOrder.bind(null, clientName, clientAddress, orderText)
+            createOrder.bind(null, clientName, clientStreet, clientPostal, clientCity, orderText)
         )
     }
 
@@ -77,18 +102,20 @@ const CheckOutForm = (props) => {
             return
         }
 
-        enterOrderHandler(nameValue, addressValue, cartCtx.items)
+        enterOrderHandler(nameValue, streetValue, postalValue, cityValue, cartCtx.items)
 
         resetName()
-        resetAddress()
+        resetStreet()
+        resetPostal()
+        resetCity()
+        cartCtx.clearCart()
         setIsSubmitted(true)
     }
 
     return (
         <form onSubmit={submitHandler}>
-            {isSubmitted ?
-                <Submission /> :
-                <InputWrapper>
+            {isSubmitted ? <h2>Your order is submited</h2> :
+                <InputWrapper borderColor={formIsValid ? '' : '#aa0b20'}>
                     <Input
                         label='Name'
                         input={{
@@ -99,43 +126,45 @@ const CheckOutForm = (props) => {
                             value: nameValue
                         }}
                     />
-                    {nameHasError && <p>Name must not be empty</p>}
+                    {nameHasError && <p>Please enter a valid name</p>}
                     <Input
                         label='Street'
                         input={{
                             id: 'street',
                             type: 'text',
-                            onChange: addressChangeHandler,
-                            onBlur: addressBlurHandler,
-                            value: addressValue
+                            onChange: streetChangeHandler,
+                            onBlur: streetBlurHandler,
+                            value: streetValue
                         }}
                     />
-                    {addressHasError && <p>Address must not be empty</p>}
+                    {streetHasError && <p>Please enter a valid street</p>}
                     <Input
                         label='Post Code'
                         input={{
                             id: 'postal',
                             type: 'text',
-                            onChange: addressChangeHandler,
-                            onBlur: addressBlurHandler,
-                            value: addressValue
+                            onChange: postalChangeHandler,
+                            onBlur: postalBlurHandler,
+                            value: postalValue
                         }}
                     />
-                    {addressHasError && <p>Address must not be empty</p>}
+                    {postalHasError && <p>Please enter a valid post code</p>}
                     <Input
                         label='City'
                         input={{
                             id: 'city',
                             type: 'text',
-                            onChange: addressChangeHandler,
-                            onBlur: addressBlurHandler,
-                            value: addressValue
+                            onChange: cityChangeHandler,
+                            onBlur: cityBlurHandler,
+                            value: cityValue
                         }}
                     />
-                    {addressHasError && <p>Address must not be empty</p>}
+                    {cityHasError && <p>Please enter a valid city</p>}
                     <section>
                         <CancelButton type='button' onClick={props.onCancel}>Cancel</CancelButton>
-                        <SubmitButton disabled={!formIsValid}>{isLoading ? 'Submitting order...' : 'Submit'}</SubmitButton>
+                        <SubmitButton>
+                            <button disabled={!formIsValid}>{isLoading ? 'Submitting order...' : 'Submit'}</button>
+                        </SubmitButton>
                     </section>
                     {error && <p>{error}</p>}
                 </InputWrapper>
